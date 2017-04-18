@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="http://github.com/dscape/nano"
-
-    >nano (v6.2.0)</a>
+    <a href="http://github.com/dscape/nano">nano (v6.2.0)</a>
 </h1>
 <h4>The official CouchDB client for Node.js</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.nano">module nano</a><ol>
 
@@ -100,24 +93,24 @@
     <li>description and source-code<pre class="apidocCodePre">function dbScope(cfg) {
   var serverScope = {};
 
-  if (typeof cfg === &#x27;string&#x27;) {
+  if (typeof cfg === 'string') {
     cfg = {url: cfg};
   }
 
-  assert.equal(typeof cfg, &#x27;object&#x27;,
-    &#x27;You must specify the endpoint url when invoking this module&#x27;);
-  assert.ok(/^https?:/.test(cfg.url), &#x27;url is not valid&#x27;);
+  assert.equal(typeof cfg, 'object',
+    'You must specify the endpoint url when invoking this module');
+  assert.ok(/^https?:/.test(cfg.url), 'url is not valid');
 
   cfg = _.clone(cfg);
 
   serverScope.config = cfg;
   cfg.requestDefaults = cfg.requestDefaults || {jar: false};
 
-  var httpAgent = (typeof cfg.request === &#x27;function&#x27;) ? cfg.request :
+  var httpAgent = (typeof cfg.request === 'function') ? cfg.request :
     request.defaults(cfg.requestDefaults);
-  var followAgent = (typeof cfg.follow === &#x27;function&#x27;) ? cfg.follow : follow;
-  var log = typeof cfg.log === &#x27;function&#x27; ? cfg.log : logger(cfg);
-  var parseUrl = &#x27;parseUrl&#x27; in cfg ? cfg.parseUrl : true;
+  var followAgent = (typeof cfg.follow === 'function') ? cfg.follow : follow;
+  var log = typeof cfg.log === 'function' ? cfg.log : logger(cfg);
+  var parseUrl = 'parseUrl' in cfg ? cfg.parseUrl : true;
 
   function maybeExtractDatabaseComponent() {
     if (!parseUrl) {
@@ -125,47 +118,47 @@
     }
 
     var path = u.parse(cfg.url);
-    var pathArray = path.pathname.split(&#x27;/&#x27;).filter(function(e) { return e; });
+    var pathArray = path.pathname.split('/').filter(function(e) { return e; });
     var db = pathArray.pop();
-    var rootPath = path.pathname.replace(/\/?$/, &#x27;/..&#x27;);
+    var rootPath = path.pathname.replace(/\/?$/, '/..');
 
     if (db) {
-      cfg.url = urlResolveFix(cfg.url, rootPath).replace(/\/?$/, &#x27;&#x27;);
+      cfg.url = urlResolveFix(cfg.url, rootPath).replace(/\/?$/, '');
       return db;
     }
   }
 
   function scrub(str) {
     if (str) {
-      str = str.replace(/\/\/(.*)@/,&#x22;//XXXXXX:XXXXXX@&#x22;);
+      str = str.replace(/\/\/(.*)@/,"//XXXXXX:XXXXXX@");
     }
     return str;
   }
 
   function relax(opts, callback) {
-    if (typeof opts === &#x27;function&#x27;) {
+    if (typeof opts === 'function') {
       callback = opts;
-      opts = {path: &#x27;&#x27;};
+      opts = {path: ''};
     }
 
-    if (typeof opts === &#x27;string&#x27;) {
+    if (typeof opts === 'string') {
       opts = {path: opts};
     }
 
     if (!opts) {
-      opts = {path: &#x27;&#x27;};
+      opts = {path: ''};
       callback = null;
     }
 
     var qs = _.extend({}, opts.qs);
 
     var headers = {
-      &#x27;content-type&#x27;: &#x27;application/json&#x27;,
-      accept: &#x27;application/json&#x27;
+      'content-type': 'application/json',
+      accept: 'application/json'
     };
 
     var req = {
-      method: (opts.method || &#x27;GET&#x27;),
+      method: (opts.method || 'GET'),
       headers: headers,
       uri: cfg.url
     };
@@ -192,43 +185,43 @@
     req.headers = _.extend(req.headers, opts.headers, cfg.defaultHeaders);
 
     if (opts.path) {
-      req.uri += &#x27;/&#x27; + opts.path;
+      req.uri += '/' + opts.path;
     } else if (opts.doc) {
       if (!/^_design/.test(opts.doc)) {
         // http://wiki.apache.org/couchdb/HTTP_Document_API#Naming.2FAddressing
-        req.uri += &#x27;/&#x27; + encodeURIComponent(opts.doc);
+        req.uri += '/' + encodeURIComponent(opts.doc);
       } else {
         // http://wiki.apache.org/couchdb/HTTP_Document_API#Document_IDs
-        req.uri += &#x27;/&#x27; + opts.doc;
+        req.uri += '/' + opts.doc;
       }
 
       // http://wiki.apache.org/couchdb/HTTP_Document_API#Attachments
       if (opts.att) {
-        req.uri += &#x27;/&#x27; + opts.att;
+        req.uri += '/' + opts.att;
       }
     }
 
     // prevent bugs where people set encoding when piping
-    if (opts.encoding !== undefined &#x26;&#x26; callback) {
+    if (opts.encoding !== undefined &amp;&amp; callback) {
       req.encoding = opts.encoding;
-      delete req.headers[&#x27;content-type&#x27;];
+      delete req.headers['content-type'];
       delete req.headers.accept;
     }
 
     if (opts.contentType) {
-      req.headers[&#x27;content-type&#x27;] = opts.contentType;
+      req.headers['content-type'] = opts.contentType;
       delete req.headers.accept;
     }
 
     // http://guide.couchdb.org/draft/security.html#cookies
     if (cfg.cookie) {
-      req.headers[&#x27;X-CouchDB-WWW-Authenticate&#x27;] = &#x27;Cookie&#x27;;
+      req.headers['X-CouchDB-WWW-Authenticate'] = 'Cookie';
       req.headers.cookie = cfg.cookie;
     }
 
     // http://wiki.apache.org/couchdb/HTTP_view_API#Querying_Options
-    if (typeof opts.qs === &#x27;object&#x27; &#x26;&#x26; !_.isEmpty(opts.qs)) {
-      [&#x27;startkey&#x27;, &#x27;endkey&#x27;, &#x27;key&#x27;, &#x27;keys&#x27;].forEach(function(key) {
+    if (typeof opts.qs === 'object' &amp;&amp; !_.isEmpty(opts.qs)) {
+      ['startkey', 'endkey', 'key', 'keys'].forEach(function(key) {
         if (key in opts.qs) {
           qs[key] = JSON.stringify(opts.qs[key]);
         }
@@ -241,8 +234,8 @@
         req.body = opts.body;
       } else {
         req.body = JSON.stringify(opts.body, function(key, value) {
-          // don&#x27;t encode functions
-          if (typeof(value) === &#x27;function&#x27;) {
+          // don't encode functions
+          if (typeof(value) === 'function') {
             return value.toString();
           } else {
             return value;
@@ -252,8 +245,8 @@
     }
 
     if (opts.form) {
-      req.headers[&#x27;content-type&#x27;] =
-        &#x27;applicat ...</pre></li>
+      req.headers['content-type'] =
+        'applicat ...</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -270,3 +263,4 @@
     ]
 </div>
 </div>
+</body></html>
