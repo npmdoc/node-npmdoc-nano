@@ -1,9 +1,14 @@
-# api documentation for  [nano (v6.2.0)](http://github.com/dscape/nano)  [![npm package](https://img.shields.io/npm/v/npmdoc-nano.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-nano) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-nano.svg)](https://travis-ci.org/npmdoc/node-npmdoc-nano)
+# npmdoc-nano
+
+#### api documentation for  [nano (v6.2.0)](http://github.com/dscape/nano)  [![npm package](https://img.shields.io/npm/v/npmdoc-nano.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-nano) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-nano.svg)](https://travis-ci.org/npmdoc/node-npmdoc-nano)
+
 #### The official CouchDB client for Node.js
 
-[![NPM](https://nodei.co/npm/nano.png?downloads=true)](https://www.npmjs.com/package/nano)
+[![NPM](https://nodei.co/npm/nano.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/nano)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-nano/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-nano_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-nano/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-nano/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-nano/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-nano/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-nano/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-nano/build/screenCapture.npmPackageListing.svg)
 
@@ -18,7 +23,6 @@
 {
     "author": {
         "name": "Apache CouchDB",
-        "email": "dev@couchdb.apache.org",
         "url": "http://couchdb.apache.org"
     },
     "bugs": {
@@ -66,20 +70,16 @@
     "main": "./lib/nano.js",
     "maintainers": [
         {
-            "name": "dscape",
-            "email": "nunojobpinto@gmail.com"
+            "name": "dscape"
         },
         {
-            "name": "jhs",
-            "email": "jason.h.smith@gmail.com"
+            "name": "jhs"
         },
         {
-            "name": "jo",
-            "email": "schmidt@netzmerk.com"
+            "name": "jo"
         },
         {
-            "name": "pgte",
-            "email": "pedro.teixeira@gmail.com"
+            "name": "pgte"
         }
     ],
     "name": "nano",
@@ -91,7 +91,6 @@
         "test",
         "checkcoverage"
     ],
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git://github.com/dscape/nano.git"
@@ -108,18 +107,6 @@
     "version": "6.2.0"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module nano](#apidoc.module.nano)
-1.  string <span class="apidocSignatureSpan">nano.</span>path
-1.  string <span class="apidocSignatureSpan">nano.</span>version
-
-
-
-# <a name="apidoc.module.nano"></a>[module nano](#apidoc.module.nano)
 
 
 
