@@ -1,6 +1,6 @@
 # npmdoc-nano
 
-#### api documentation for  [nano (v6.2.0)](http://github.com/dscape/nano)  [![npm package](https://img.shields.io/npm/v/npmdoc-nano.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-nano) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-nano.svg)](https://travis-ci.org/npmdoc/node-npmdoc-nano)
+#### basic api documentation for  [nano (v6.2.0)](http://github.com/dscape/nano)  [![npm package](https://img.shields.io/npm/v/npmdoc-nano.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-nano) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-nano.svg)](https://travis-ci.org/npmdoc/node-npmdoc-nano)
 
 #### The official CouchDB client for Node.js
 
@@ -104,7 +104,8 @@
         "test": "DEBUG=* NOCK_OFF=true istanbul cover tape tests/*/*/*.js",
         "unmocked": "NOCK_OFF=true tape tests/*/*/*.js"
     },
-    "version": "6.2.0"
+    "version": "6.2.0",
+    "bin": {}
 }
 ```
 
